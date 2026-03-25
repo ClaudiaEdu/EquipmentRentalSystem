@@ -21,4 +21,9 @@ public class UserService
     {
         return _users.FirstOrDefault(u => u.Id == id);
     }
+    
+    public User GetUserById(int id)
+    {
+        return _users.FirstOrDefault(u => u.Id == id);
+    }
 }
