@@ -81,4 +81,11 @@ public class RentalService
             .Where(r => !r.IsReturned && DateTime.Now > r.DueDate)
             .ToList();
     }
+    
+    public List<Rental> GetActiveRentalsForUser(User user)
+    {
+        return _rentals
+            .Where(r => r.User == user && !r.IsReturned)
+            .ToList();
+    }
 }
