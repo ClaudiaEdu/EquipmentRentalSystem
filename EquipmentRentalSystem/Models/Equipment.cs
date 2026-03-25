@@ -15,4 +15,6 @@ public abstract class Equipment
         Name = name;
         Status = EquipmentStatus.Available;
     }
+    
+    public bool IsAvailable => Status == EquipmentStatus.Available;
 }
