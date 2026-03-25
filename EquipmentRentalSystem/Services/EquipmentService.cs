@@ -10,6 +10,11 @@ public class EquipmentService
 
     public void AddEquipment(Equipment equipment)
     {
+        if (equipment == null)
+        {
+            throw new ArgumentNullException(nameof(equipment));
+        }
+
         _equipmentList.Add(equipment);
     }
 
