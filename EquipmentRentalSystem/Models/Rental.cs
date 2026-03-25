@@ -13,6 +13,7 @@ public class Rental
     public decimal Penalty { get; private set; }
 
     public bool IsReturned => ReturnDate.HasValue;
+    public bool WasReturnedOnTime => ReturnDate.HasValue && ReturnDate.Value <= DueDate;
 
     public Rental(User user, Equipment equipment, int days, DateTime? borrowDate = null)
     {
