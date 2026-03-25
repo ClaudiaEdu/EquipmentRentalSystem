@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿// Demo scenario for equipment rental system
+
+using System.Linq;
 using EquipmentRentalSystem.Exceptions;
 using EquipmentRentalSystem.Models;
 using EquipmentRentalSystem.Services;
