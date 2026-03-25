@@ -17,7 +17,9 @@ public class RentalService
         _userLimitPolicy = userLimitPolicy;
         _penaltyCalculator = penaltyCalculator;
     }
-
+    
+    
+    // Handles equipment rental and checks business rules
     public void RentEquipment(User user, Equipment equipment, int days, DateTime? borrowDate = null)
     {
         if (equipment.Status != EquipmentStatus.Available)
@@ -37,7 +39,7 @@ public class RentalService
         _rentals.Add(rental);
         equipment.Status = EquipmentStatus.Unavailable;
     }
-
+    // Handles equipment return and calculates penalty
     public decimal ReturnEquipment(int rentalId)
     {
         var rental = _rentals.FirstOrDefault(r => r.Id == rentalId);
