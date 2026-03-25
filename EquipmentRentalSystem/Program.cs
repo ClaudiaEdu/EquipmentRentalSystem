@@ -35,8 +35,16 @@ public class Program
         var projector1 = allEquipment[2];
         var camera1 = allEquipment[4];
         var camera2 = allEquipment[5];
+        
+        var foundUser = userService.GetById(allUsers[0].Id);
+        Console.WriteLine($"Found user: {foundUser?.FirstName}");
 
         Console.WriteLine("Added equipment:");
+        DisplayEquipment(allEquipment);
+        Console.WriteLine();
+        
+        equipmentService.MarkAsUnavailable(allEquipment[3].Id);
+        Console.WriteLine("One equipment item was marked as unavailable:");
         DisplayEquipment(allEquipment);
         Console.WriteLine();
 
@@ -77,7 +85,7 @@ public class Program
         Console.WriteLine();
 
         Console.WriteLine("Active rentals of first student:");
-        DisplayRentals(rentalService.GetActiveRentalsByUser(student1.Id));
+        DisplayRentals(rentalService.GetActiveRentalsForUser(student1));
         Console.WriteLine();
 
         Console.WriteLine("Returning one rental on time:");
