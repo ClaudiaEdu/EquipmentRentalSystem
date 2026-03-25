@@ -6,54 +6,55 @@ Aplikacja konsolowa w języku C#, symulująca uczelnianą wypożyczalnię sprzę
 System umożliwia zarządzanie sprzętem, użytkownikami oraz wypożyczeniami, wraz z kontrolą dostępności i naliczaniem kar za opóźnienia.
 
 Projekt został wykonany w ramach przedmiotu APBD z naciskiem na:
-•	poprawny model domeny,
-•	podział odpowiedzialności klas,
-•	czytelność kodu,
-•	zastosowanie zasad projektowania obiektowego (kohezja, coupling, elementy SOLID).
+- poprawny model domeny,
+-	podział odpowiedzialności klas,
+-	czytelność kodu,
+-	zastosowanie zasad projektowania obiektowego (kohezja, coupling, elementy SOLID).
 
 
 
 Funkcjonalności
-•	Dodawanie sprzętu różnych typów (Laptop, Projector, Camera)
-•	Dodawanie użytkowników (Student, Employee)
-•	Wyświetlanie:
-•	całego sprzętu
-•	dostępnego sprzętu
-•	Wypożyczanie sprzętu użytkownikowi
-•	Zwrot sprzętu (z naliczaniem kar)
-•	Blokowanie operacji:
-•	wypożyczenia niedostępnego sprzętu
-•	przekroczenia limitu użytkownika
-•	Wyświetlanie:
-•	aktywnych wypożyczeń użytkownika
-•	przeterminowanych wypożyczeń
-•	Generowanie raportu końcowego
+	Dodawanie sprzętu różnych typów (Laptop, Projector, Camera)
+-	Dodawanie użytkowników (Student, Employee)
+-	Wyświetlanie:
+-	całego sprzętu
+-	dostępnego sprzętu
+-	Wypożyczanie sprzętu użytkownikowi
+-	Zwrot sprzętu (z naliczaniem kar)
+-	Blokowanie operacji:
+-	wypożyczenia niedostępnego sprzętu
+-	przekroczenia limitu użytkownika
+-	Wyświetlanie:
+-	aktywnych wypożyczeń użytkownika
+-	przeterminowanych wypożyczeń
+-	Generowanie raportu końcowego
 
 
 Model domeny
 
 Projekt zawiera następujące elementy:
-•	Equipment – klasa bazowa sprzętu
-•	Laptop
-•	Projector
-•	Camera
-•	User – klasa bazowa użytkownika
-•	Student
-•	Employee
-•	Rental – reprezentuje wypożyczenie sprzętu
-•	UserType – enum określający typ użytkownika
+-	Equipment – klasa bazowa sprzętu
+-	Laptop
+-	Projector
+-	Camera
+-	User – klasa bazowa użytkownika
+-	Student
+-	Employee
+-	Rental – reprezentuje wypożyczenie sprzętu
+-	UserType – enum określający typ użytkownika
 
 
 Struktura projektu
 
 Projekt został podzielony na logiczne warstwy:
-•	Models – klasy domenowe (Equipment, User, Rental)
-•	Services – logika biznesowa (wypożyczenia, użytkownicy, raporty)
-•	Interfaces – kontrakty dla zmiennych reguł (limity, kary)
-•	Exceptions – własne wyjątki aplikacyjne
-•	Enums – typy wyliczeniowe (UserType, EquipmentStatus)
-•	Data – inicjalizacja danych (DataSeeder)
-•	Utilities – narzędzia pomocnicze (np. generator ID)
+-	Models – klasy domenowe (Equipment, User, Rental)
+-	Services – logika biznesowa (wypożyczenia, użytkownicy, raporty)
+-	Interfaces – kontrakty dla zmiennych reguł (limity, kary)
+-	Exceptions – własne wyjątki aplikacyjne
+-	Enums – typy wyliczeniowe (UserType, EquipmentStatus)
+-	Data – inicjalizacja danych (DataSeeder)
+-   DataSeeder oddziela dane startowe od logiki scenariusza w Program.cs
+-	Utilities – narzędzia pomocnicze (np. generator ID)
 
 
 Decyzje projektowe
@@ -61,24 +62,24 @@ Decyzje projektowe
 Podział odpowiedzialności (Single Responsibility)
 
 Każda klasa ma jasno określoną rolę:
-•	modele przechowują dane,
-•	serwisy odpowiadają za logikę biznesową,
-•	Program.cs pełni rolę scenariusza demonstracyjnego.
+-	modele przechowują dane,
+-	serwisy odpowiadają za logikę biznesową,
+-	Program.cs pełni rolę scenariusza demonstracyjnego.
 
 
 Kohezja (High Cohesion)
 
 Każda klasa skupia się na jednym obszarze:
-•	PenaltyCalculator odpowiada wyłącznie za naliczanie kar,
-•	UserLimitPolicy zarządza limitami użytkowników,
-•	RentalService obsługuje wypożyczenia.
+-	PenaltyCalculator odpowiada wyłącznie za naliczanie kar,
+-	UserLimitPolicy zarządza limitami użytkowników,
+-	RentalService obsługuje wypożyczenia.
 
 
 Niskie sprzężenie (Low Coupling)
 
 Zależności są ograniczone poprzez użycie interfejsów:
-•	IUserLimitPolicy
-•	IPenaltyCalculator
+-	IUserLimitPolicy
+-	IPenaltyCalculator
 
 Dzięki temu logika może być łatwo zmieniana bez modyfikowania całego systemu.
 
@@ -86,8 +87,8 @@ Dzięki temu logika może być łatwo zmieniana bez modyfikowania całego system
 Elastyczność reguł biznesowych
 
 Reguły takie jak:
-•	limit wypożyczeń,
-•	sposób naliczania kar
+-	limit wypożyczeń,
+-	sposób naliczania kar
 
 zostały wydzielone do osobnych klas, co umożliwia ich łatwą zmianę.
 
